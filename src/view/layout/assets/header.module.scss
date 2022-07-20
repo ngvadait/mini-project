@@ -1,0 +1,41 @@
+.main {
+  color: #000;
+  :global(.container) {
+    border-bottom: 1px solid #000;
+  }
+  .header_left {
+    a {
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+      &:hover {
+        color: #000;
+      }
+    }
+    .house_icon {
+      width: 30px;
+      height: auto;
+      float: left;
+    }
+    .title_header {
+      width: calc(100% - 30px);
+      float: right;
+      padding-left: 10px;
+    }
+  }
+  .header_right {
+    text-align: right;
+    padding-top: 15px;
+    .logged_in {
+      button {
+        margin-left: 10px;
+      }
+    }
+    .not_logged_in {
+      input {
+        border: 1px solid #000;
+        margin-right: 10px;
+      }
+    }
+  }
+}
