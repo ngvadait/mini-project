@@ -1,3 +1,37 @@
 .main {
   margin-top: 2rem;
+  .empty_data {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    padding-top: 30px;
+  }
+  .block_yt {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    iframe {
+      float: left;
+    }
+    .detail {
+      width: calc(100% - 420px);
+      float: right;
+      padding: 10px 20px;
+      p {
+        margin-bottom: 0;
+        display: block;
+      }
+      .title_yt {
+        color: red;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .shared_by {
+        font-weight: 600;
+      }
+      .description {
+        font-weight: 600;
+      }
+    }
+  }
 }

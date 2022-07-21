@@ -4,7 +4,7 @@ import Header from '@View/layout/components/Header';
 import Footer from '@View/layout/components/Footer';
 import styles from '@View/layout/assets/master.module.scss';
 
-const MasterLayout: FC = ({children}: any) => {
+const MasterLayout: FC | any = ({children}: any) => {
   return (
     <>
       <div className="w-100">

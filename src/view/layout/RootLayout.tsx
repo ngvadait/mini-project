@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-const RootLayout: FC | any = ({children}) => {
+const RootLayout: FC | any = ({children}: any) => {
 
   return (
     <>

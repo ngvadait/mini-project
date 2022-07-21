@@ -14,8 +14,8 @@ const Header: FC = () => {
     if (!auth) {
       setIsLogin(false);
     } else {
-      setIsLogin(true);
       setUserData(JSON.parse(auth));
+      setIsLogin(true);
     }
   };
 
@@ -73,7 +73,7 @@ const Header: FC = () => {
           <div className={styleCombine('col-6', styles.header_right)}>
             {isLogin ? (
               <div className={styles.logged_in}>
-                <span>Welcome {userData.email}</span>
+                <span>Welcome <b>{userData?.email}</b></span>
                 <Link href="/share">
                   <a>
                     <button>Share a movie</button>
