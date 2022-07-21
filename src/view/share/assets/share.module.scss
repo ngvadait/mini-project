@@ -1,0 +1,32 @@
+.main {
+  margin-top: 10rem;
+  .group_form {
+    margin: 0 auto;
+    border: 2px solid #000;
+    width: 400px;
+    padding: 20px 20px;
+    position: relative;
+    .title {
+      position: absolute;
+      top: -15px;
+      background: #fff;
+      padding: 0 5px;
+      font-weight: 700;
+    }
+    .block_input {
+      margin: 10px 0 15px;
+      label {
+        font-weight: 600;
+        margin-right: 10px;
+      }
+      input {
+        width: 200px;
+        padding: 0 7px;
+      }
+    }
+    button {
+      width: 201px;
+      margin-left: 107px;
+    }
+  }
+}
