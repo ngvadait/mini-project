@@ -1,9 +1,61 @@
-import {FC} from "react";
+import {FC, useEffect, useState} from "react";
 import styles from '@View/layout/assets/header.module.scss';
 import {styleCombine} from "@Common/helper";
 import Link from 'next/link';
 
 const Header: FC = () => {
+  const [userData, setUserData] = useState<any>(null);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const init = async () => {
+    const auth = localStorage.getItem('auth');
+    if (!auth) {
+      setIsLogin(false);
+    } else {
+      setIsLogin(true);
+      setUserData(JSON.parse(auth));
+    }
+  };
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    if (!email.length || !password.length) {
+      alert('Please enter your email and password data');
+      return;
+    }
+    const data = {
+      email: email,
+      password: password
+    };
+
+    localStorage.setItem('auth', JSON.stringify(data));
+    setIsLogin(true);
+  };
+
+  const handleChange = async (event: any) => {
+    const type = event.currentTarget.getAttribute('type');
+    if (type === 'text') {
+      setEmail(event.target.value);
+      return;
+    }
+
+    setPassword(event.target.value);
+
+  };
+
+  const _logout = async () => {
+    localStorage.removeItem("auth");
+    setEmail('');
+    setPassword('');
+    setIsLogin(false);
+  }
+
+  useEffect(() => {
+    init();
+  }, [isLogin]);
+
   return (
     <div className={styles.main}>
       <div className={styleCombine('container')}>
@@ -19,20 +71,23 @@ const Header: FC = () => {
             </Link>
           </div>
           <div className={styleCombine('col-6', styles.header_right)}>
-            <div className={styles.logged_in}>
-              <span>Welcome fasdf</span>
-              <Link href="/share">
-                <a>
-                  <button>Share a movie</button>
-                </a>
-              </Link>
-              <button>Logout</button>
-            </div>
-            {/*<div className={styles.not_logged_in}>*/}
-            {/*  <input type="text" placeholder="email" />*/}
-            {/*  <input type="password" placeholder="password" />*/}
-            {/*  <button>Login / Register</button>*/}
-            {/*</div>*/}
+            {isLogin ? (
+              <div className={styles.logged_in}>
+                <span>Welcome {userData.email}</span>
+                <Link href="/share">
+                  <a>
+                    <button>Share a movie</button>
+                  </a>
+                </Link>
+                <button onClick={_logout}>Logout</button>
+              </div>
+            ) : (
+              <form className={styles.not_logged_in} onSubmit={handleSubmit}>
+                <input type="text" placeholder="email" value={email} onChange={handleChange} />
+                <input type="password" placeholder="password" value={password} onChange={handleChange} />
+                <button>Login / Register</button>
+              </form>
+            )}
           </div>
         </div>
       </div>
