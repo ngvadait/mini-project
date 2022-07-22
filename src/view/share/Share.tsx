@@ -12,9 +12,7 @@ const Share = () => {
   const init = async () => {
     const auth: any = localStorage.getItem('auth');
 
-    if (!auth) {
-      router.push('/');
-    }
+    if (!auth) return;
 
     setUserData(JSON.parse(auth));
   };

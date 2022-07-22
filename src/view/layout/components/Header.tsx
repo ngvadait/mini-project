@@ -2,8 +2,10 @@ import {FC, useEffect, useState} from "react";
 import styles from '@View/layout/assets/header.module.scss';
 import {styleCombine} from "@Common/helper";
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 
 const Header: FC = () => {
+  const router = useRouter();
   const [userData, setUserData] = useState<any>(null);
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
@@ -13,6 +15,7 @@ const Header: FC = () => {
     const auth = localStorage.getItem('auth');
     if (!auth) {
       setIsLogin(false);
+      if (router.pathname !== '') router.push('/');
     } else {
       setUserData(JSON.parse(auth));
       setIsLogin(true);
