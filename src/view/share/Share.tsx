@@ -61,7 +61,7 @@ const Share = () => {
             <label>Youtube URL:</label>
             <input type="text" value={link} onChange={handleChange} />
           </div>
-          <button onClick={handleSubmit}>Share</button>
+          <button id="share" onClick={handleSubmit}>Share</button>
         </div>
       </div>
     </div>

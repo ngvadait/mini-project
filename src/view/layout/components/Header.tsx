@@ -79,13 +79,13 @@ const Header: FC = () => {
                     <button>Share a movie</button>
                   </a>
                 </Link>
-                <button onClick={_logout}>Logout</button>
+                <button id="logout" onClick={_logout}>Logout</button>
               </div>
             ) : (
               <form className={styles.not_logged_in} onSubmit={handleSubmit}>
-                <input type="text" placeholder="email" value={email} onChange={handleChange} />
-                <input type="password" placeholder="password" value={password} onChange={handleChange} />
-                <button>Login / Register</button>
+                <input type="text" placeholder="email" id="email" value={email} onChange={handleChange} />
+                <input type="password" placeholder="password" id="password" value={password} onChange={handleChange} />
+                <button id="login_register">Login / Register</button>
               </form>
             )}
           </div>
